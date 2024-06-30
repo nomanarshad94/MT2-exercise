@@ -32,9 +32,9 @@ public class Kaczmarz_Reconstruction implements PlugIn {
 				x[j] = x[j] + (numerator / denominator) * A[k][j];
 			}
 		}
-
+		// Displaying the output in Image J console
 		IJ.showMessage(Arrays.toString(Arrays.copyOfRange(x, 0, 3))+ "\n"+ Arrays.toString(Arrays.copyOfRange(x, 3, 6))+ "\n"+Arrays.toString(Arrays.copyOfRange(x, 6, 9)));
-		// Confused between ide console and Image J console so printing the output to both!
+		// Confused between IDE console and Image J console so printing the output to both!
 		System.out.println(Arrays.toString(Arrays.copyOfRange(x, 0, 3))+ "\n"+ Arrays.toString(Arrays.copyOfRange(x, 3, 6))+ "\n"+Arrays.toString(Arrays.copyOfRange(x, 6, 9)));
 	}
 
