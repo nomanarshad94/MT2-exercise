@@ -8,7 +8,7 @@ public class MRI_Reconstruction implements PlugIn {
 
         // Task1: Implement fftShift()  (3p)
         ComplexImage result = fftShift(kSpace);
-        Ex6_Helpers.showImage(result.getMagnitude(), "kSpacefftshift");
+        Ex6_Helpers.showImage(result.getLogMagnitude(), "kSpacefftshift");
 
         // Task2: Reconstruct the image from k-space (2p)
         ComplexImage image = Ex6_Helpers.InverseFFT2D(result);
@@ -51,29 +51,6 @@ public class MRI_Reconstruction implements PlugIn {
         }
 
         return output;
-    }
-
-    public static float[][] swapQuadrants1(float[][] data) {
-        int height = data.length;
-        int width = data[0].length;
-        int halfHeight = height / 2;
-        int halfWidth = width / 2;
-
-        // Swap quadrants
-        for (int y = 0; y < halfHeight; y++) {
-            for (int x = 0; x < halfWidth; x++) {
-                // Swap top-left with bottom-right
-                float temp = data[y][x];
-                data[y][x] = data[y + halfHeight][x + halfWidth];
-                data[y + halfHeight][x + halfWidth] = temp;
-
-                // Swap top-right with bottom-left
-                temp = data[y][x + halfWidth];
-                data[y][x + halfWidth] = data[y + halfHeight][x];
-                data[y + halfHeight][x] = temp;
-            }
-        }
-        return data;
     }
 
 
