@@ -8,6 +8,7 @@ public class MRI_Reconstruction implements PlugIn {
 
         // Task1: Implement fftShift()  (3p)
         ComplexImage result = fftShift(kSpace);
+        // Showing the kspace shifted image in the log scale to compare results with provided image in exercise pdf
         Ex6_Helpers.showImage(result.getLogMagnitude(), "kSpacefftshift");
 
         // Task2: Reconstruct the image from k-space (2p)
@@ -23,6 +24,7 @@ public class MRI_Reconstruction implements PlugIn {
         Ex6_Helpers.showImage(zeroFilledKSpace.getLogMagnitude(), "zeroFilledKSpace");
         // Task5: Do the same as Task1 and Task2 but with zero-filled k-space (1p)
         ComplexImage result2 = fftShift(zeroFilledKSpace);
+        // Showing the zero filled kspace shifted image in the log scale to compare results with provided image in exercise pdf
         Ex6_Helpers.showImage(result2.getLogMagnitude(), "kSpacefftshift2");
         ComplexImage image2 = Ex6_Helpers.InverseFFT2D(result2);
         image2 = fftShift(image2);
@@ -62,7 +64,8 @@ public class MRI_Reconstruction implements PlugIn {
         // Your codes here ...
         for (int i = 0; i < input.height; i++) {
             for (int j = 0; j < input.width; j++) {
-                if (i < input.height / 2 - boxSize / 2 || i >= input.height / 2 + boxSize / 2 || j < input.width / 2 - boxSize / 2 || j >= input.width / 2 + boxSize / 2) {
+                if ((i < ((input.height / 2) - (boxSize / 2))) || (i >= ((input.height / 2) + (boxSize / 2))) ||
+                        (j < ((input.width / 2) - (boxSize / 2))) || (j >= ((input.width / 2) + (boxSize / 2)))) {
                     tmpReal[i][j] = 0;
                     tmpImag[i][j] = 0;
                 }
