@@ -16,5 +16,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ij" level="project" />
+    <orderEntry type="library" name="io.jhdf" level="project" />
   </component>
 </module>
