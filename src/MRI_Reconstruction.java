@@ -45,8 +45,10 @@ public class MRI_Reconstruction implements PlugIn {
         int halfWidth = input[0].length / 2;
         for (int i = 0; i < halfHeight; i++) {
             for (int j = 0; j < halfWidth; j++) {
+                // swap the first quadrant with the third
                 output[i][j] = input[i + halfHeight][j + halfWidth];
                 output[i + halfHeight][j + halfWidth] = input[i][j];
+                // swap the second quadrant with the fourth
                 output[i][j + halfWidth] = input[i + halfHeight][j];
                 output[i + halfHeight][j] = input[i][j + halfWidth];
             }
@@ -64,6 +66,7 @@ public class MRI_Reconstruction implements PlugIn {
         // Your codes here ...
         for (int i = 0; i < input.height; i++) {
             for (int j = 0; j < input.width; j++) {
+                // set the values outside the boxSize to zero in all quadrants
                 if ((i < ((input.height / 2) - (boxSize / 2))) || (i >= ((input.height / 2) + (boxSize / 2))) ||
                         (j < ((input.width / 2) - (boxSize / 2))) || (j >= ((input.width / 2) + (boxSize / 2)))) {
                     tmpReal[i][j] = 0;
